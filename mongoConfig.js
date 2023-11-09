@@ -12,5 +12,6 @@ const db = client.db();
 
 const users =  db.collection("users");
 const jobs = db.collection("jobs");
+const company = db.collection("company")
 
-module.exports = {users, jobs}
+module.exports = {users, jobs, company}

@@ -15,8 +15,9 @@ JobRouter.post("/add",async(req,res) => {
 })
 
 JobRouter.get("/getAll",async(req,res) => {
+
     try {
-       
+        
         const data = await getAll(req);
         res.send(data);
     } catch (error) {
