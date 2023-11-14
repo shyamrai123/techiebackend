@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const {addcompany,getCompany, getCompanyJobs ,getoneCompany} = require("../controller/companyController");
+const {addcompany,getCompany, getCompanyJobs ,getoneCompany, getCompanyJobsid} = require("../controller/companyController");
 const companyRouter = Router();
 
 
@@ -48,6 +48,20 @@ companyRouter.get("/companyjobs/:cid", async(req,res)=>{
         res.send({err: error.message})
      }
 
+})
+
+
+companyRouter.get("/companyjobsid/:cjbid", async(req,res)=>{
+    try {
+        
+        const data = await getCompanyJobsid(req);
+        // console.log(data);
+         res.send(data);
+    } catch (error) {
+        res.send({err: error.message})
+
+        
+    }
 })
 
 

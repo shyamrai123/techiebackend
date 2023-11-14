@@ -19,7 +19,6 @@ const getoneCompany = (req)=>{
 }
 
 
-
 const getCompanyJobs =async (req)=>{
   const companyid = new mongoDb.ObjectId(req.params.cid);
     const companyData = await company.findOne(companyid);
@@ -27,9 +26,18 @@ const getCompanyJobs =async (req)=>{
   const companyPromise = jobsid.map((e) => jobs.findOne(e));
 
   return Promise.allSettled(companyPromise);
+
+  
+}
+
+const getCompanyJobsid = async(req,res)=>{
+  const compjobId = new mongoDb.ObjectId(req.params.cjbid);
+   const companyjobId = await jobs.findOne({_id:compjobId});
+   return companyjobId;
+  
 }
 
 
 module.exports = {
-    addcompany, getCompany,getCompanyJobs , getoneCompany
+    addcompany, getCompany,getCompanyJobs , getoneCompany, getCompanyJobsid
 }
